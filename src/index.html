@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>人民调解</title>
+        <link rel="stylesheet" href="./css/style.min.css">
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=2YSGywmFy0PHOqVKTRNPoGOY"></script>
+    </head>
+    <body>
+    	<div class="g-head">
+    	    <div class="inner">基层司法行政数据子平台</div>
+    	</div>
+    	<div class="g-body">
+    		<div class="container index">
+    			<div class="showcase left">
+                    <div class="bar level_1 line-bottom" goto="case_number">
+                        <div class="u-header">
+                            <h2>业务总数</h2>
+                        </div>
+                        <div class="content">
+                            <div class="u-wrapper wp50">
+                                <div class="dashboard">
+                                    <span id="totalToday">204</span>
+                                    <span>今日</span>
+                                </div>
+                            </div>
+                            <div class="u-wrapper wp50">
+                                <div class="dashboard">
+                                    <span id="totalYear">2251</span>
+                                    <span>全年</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_2 inline-block wp50 line-right" goto="case_number">
+                        <div class="u-header">
+                            <h2>调解案件数</h2>
+                        </div>
+                        <div class="content">
+                            <div class="num-list-wrap">
+                                <div class="cell">
+                                    <div class="num-list" id="numList_1"></div>
+                                    <p>今日新增</p>
+                                </div>
+                                <div class="cell">
+                                    <div class="num-list" id="numList_2"></div>
+                                    <p>全年累计</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_2 inline-block wp50" goto="case_number">
+                        <div class="u-header" style="padding-left:.25rem;">
+                            <h2>110公安司法联动</h2>
+                        </div>
+                        <div class="content">
+                            <div class="num-list-wrap" style="padding-left:.25rem;">
+                                <div class="cell">
+                                    <div class="num-list" id="numList_3"></div>
+                                    <p>今日新增</p>
+                                </div>
+                                <div class="cell">
+                                    <div class="num-list" id="numList_4"></div>
+                                    <p>全年累计</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_3">
+                        <div class="u-header">
+                            <h2>基层公共法律服务次数</h2>
+                        </div>
+                        <div class="content">
+                            <div class="circle-wrap">
+                                <div class="cell">
+                                    <div class="circle dark">365</div>
+                                    <span>代理法律文书</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="circle">542</div>
+                                    <span>线上咨询</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="circle">350</div>
+                                    <span>提供社区治理意见</span>
+                                </div>
+                            </div>
+                            <div class="circle-wrap">
+                                <div class="cell">
+                                    <div class="circle dark">216</div>
+                                    <span>查审合同文书</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="circle">754</div>
+                                    <span>代理诉讼仲裁</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="circle">480</div>
+                                    <span>线下咨询</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="circle dark">336</div>
+                                    <span>线下咨询</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_4" goto="service_quality">
+                        <div class="u-header">
+                            <h2>服务质量</h2>
+                        </div>
+                        <div class="content">
+                            <div class="circle-wrap">
+                                <div class="cell" style="transform:translateX(.6rem);">
+                                    <div class="shield blue">99.9%</div>
+                                    <span>调解成功率</span>
+                                </div>
+                                <div class="cell" style="transform:translateX(-.3rem);">
+                                    <div class="shield purple">8.5</div>
+                                    <span>文书质量评分</span>
+                                </div>
+                            </div>
+                            <div class="circle-wrap" style="padding-bottom:.1rem;">
+                                <div class="cell">
+                                    <div class="annulus purple">85%</div>
+                                    <span>村居法律顾问好评率</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="annulus blue">67%</div>
+                                    <span>调委会好评率</span>
+                                </div>
+                                <div class="cell">
+                                    <div class="annulus green">73%</div>
+                                    <span>调解员好评率</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase middle">
+                    <!-- <div class="top">
+                        <div class="input-group select-con" id="selectType">
+                            <input class="form-control select-body" type="text" placeholder="请选择" value="律所">
+                            <a class="btn btn-arrow-down"></a>
+                            <div class="select-content">
+                                <ul>
+                                    <li class="selected" value="law">律所</li>
+                                    <li value="justice">司法所</li>
+                                    <li value="conciliation">调解委员会</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="map-wrapper" id="map"></div>
+                </div>
+                <div class="showcase right">
+                    <div class="bar level_1 inline-block wp50 line-bottom">
+                        <div class="content">
+                            <div class="u-header">
+                                <h2>机构总数</h2>
+                            </div>
+                            <div class="num-list-wrap">
+                                <div class="cell">
+                                    <div class="num-list" id="numList_5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_1 inline-block wp50 line-bottom" goto="stuff_all">
+                        <div class="content">
+                            <div class="u-header">
+                                <h2>人员总数</h2>
+                            </div>
+                            <div class="num-list-wrap">
+                                <div class="cell">
+                                    <div class="num-list" id="numList_6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_2 line-bottom" style="margin:0 -.24rem;">
+                        <div class="content no-head">
+                            <div class="left" goto="institution_analyse">
+                                <div class="top">
+                                    <div class="bar">   
+                                        <i class="icon icon-shield"></i>
+                                        <div>   
+                                            <h2>222</h2>
+                                            <p>司法所</p>
+                                        </div>
+                                    </div>
+                                    <div class="bar offset">   
+                                        <i class="icon icon-clock"></i>
+                                        <div>   
+                                            <h2>6579</h2>
+                                            <p>调委会</p>
+                                        </div>
+                                    </div>
+                                    <div class="bar offset">   
+                                        <i class="icon icon-stele"></i>
+                                        <div>   
+                                            <h2>410</h2>
+                                            <p>公共法律服务站</p>
+                                        </div>
+                                    </div>
+                                    <div class="bar">   
+                                        <i class="icon icon-room"></i>
+                                        <div>   
+                                            <h2>350</h2>
+                                            <p>公共法律服务室</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="chart" id="flow_1"></div>
+                                    <p>村居法律顾问-覆盖率</p>
+                                </div>
+                            </div>
+                            <div class="right" goto="stuff_quantity">
+                                <div class="top">
+                                    <div class="bar">   
+                                        <div>
+                                            <span>2511</span>
+                                            <span>调解员</span>
+                                        </div>
+                                    </div>
+                                    <div class="bar">   
+                                        <div>
+                                            <span>476</span>
+                                            <span>公务员</span>
+                                        </div>
+                                    </div>
+                                    <div class="bar offset">   
+                                        <div>
+                                            <span>350</span>
+                                            <span>文员</span>
+                                        </div>
+                                    </div>
+                                    <div class="bar">   
+                                        <div>
+                                            <span>312</span>
+                                            <span>社工</span>
+                                        </div>
+                                    </div>
+                                    <div class="bar">   
+                                        <div>
+                                            <span>199</span>
+                                            <span>志愿者</span>
+                                        </div>
+                                    </div>
+                                    <div class="bar">   
+                                        <div>
+                                            <span>130</span>
+                                            <span>村居法律顾问</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="chart" id="flow_2"></div>
+                                    <p>司法所专项编制-落实率</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar level_3">
+                        <div class="content no-head">
+                            <div class="detail-list">
+                                <div class="cell" goto="outer_data">
+                                    <p class="light-blue">13</p>
+                                    <p>外部接入-单位数</p>
+                                </div>
+                                <div class="cell" goto="inteligent_apply">
+                                    <p class="pink">805</p>
+                                    <p>在线法律顾问</p>
+                                </div>
+                                <div class="cell">
+                                    <p class="yellow">623</p>
+                                    <p>站点在线用户</p>
+                                </div>
+                                <div class="cell" goto="outer_data">
+                                    <p class="light-blue">6457</p>
+                                    <p>外部接入-数据量</p>
+                                </div>
+                                <div class="cell" goto="inteligent_apply">
+                                    <p class="orange">4984</p>
+                                    <p>智能应用次数</p>
+                                </div>
+                                <div class="cell">
+                                    <p class="yellow">1546</p>
+                                    <p>手机在线用户</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+        <script src="./vender/echarts/echarts-4.0.4.js"></script>
+        <script src="./vender/echarts/echarts-liquidfill.min.js"></script>
+        <script src="./vender/fontawesome-free-5.0.6/svg-with-js/js/fontawesome-all.min.js"></script>
+        <script src="./vender/js/jquery-2.2.1.min.js"></script>
+        <script src="./vender/js/jquery.animateNumber.min.js"></script>
+        <script src="./vender/js/mapv.min.js"></script>
+        <script src="./js/map_data.js"></script>
+        <script src="./js/common.js"></script>
+        <script src="./js/index.js"></script>
+	</body>
+</html>
